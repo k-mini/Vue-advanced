@@ -29,6 +29,16 @@ import ListItem from '../components/ListItem.vue'
 export default {
   components: {
     ListItem,
+  },
+  created() {
+    this.$emit('startSpinner');
+    this.$store.dispatch('FETCH_JOBS')
+      .then(() => {
+        this.$emit('endSpinner');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 };
 </script>

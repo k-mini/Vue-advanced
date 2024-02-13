@@ -29,7 +29,7 @@ import ListItem from '../components/ListItem.vue';
 export default {
   components: {
     ListItem,
-  }
+  },
   // computed : {
   //   // 1번째 방법
   //   // ask() {
@@ -42,8 +42,15 @@ export default {
   //   // 3번째 방법
   //   ...mapGetters(['fetchedAsk'])
   // },
-  // created() {
-  //   this.$store.dispatch('FETCH_ASK');
-  // },
+  created() {
+    this.$emit('startSpinner');
+    this.$store.dispatch('FETCH_ASK')
+      .then(() => {
+        this.$emit('endSpinner');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
 };
 </script>

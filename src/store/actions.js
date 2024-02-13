@@ -2,29 +2,32 @@ import {
   fetchNewsList,
   fetchJobsList,
   fetchAskList,
+  fetchList,
   fetchUserInfo,
   fetchCommentItem
 } from "../api/index.js";
 
 export default {
-  FETCH_NEWS(context) {
-    fetchNewsList()
+  async FETCH_NEWS(context) {
+    return fetchNewsList()
       .then(response => {
         context.commit('SET_NEWS', response.data);
+        console.log('fetched 전 ');
+        return 'hi';
       })
       .catch(error => {
         console.log(error);
       })
   },
   FETCH_JOBS(context) {
-    fetchJobsList()
+    return fetchJobsList()
       .then(({ data }) => {
         context.commit('SET_JOBS', data);
       })
       .catch(err => console.log(err));
   },
   FETCH_ASK({ commit }) {
-    fetchAskList()
+    return fetchAskList()
       .then(({ data }) => {
         commit('SET_ASK', data);
       })
@@ -43,5 +46,10 @@ export default {
       commit('SET_ITEM', data);
     })
     .catch(err => console.log(err));
+  },
+  FETCH_LIST({ commit }, pageName) {
+    fetchList(pageName)
+      .then(({ data }) => commit('SET_LIST', data) )
+      .catch(error=>console.log(error));
   }
 }

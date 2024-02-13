@@ -1,9 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import NewsView from '../views/NewsView.vue';
-import AskView from '../views/AskView.vue';
-import JobsView from '../views/JobsView.vue';
+// import NewsView from '../views/NewsView.vue';
+// import AskView from '../views/AskView.vue';
+// import JobsView from '../views/JobsView.vue';
 import UserView from '../views/UserView.vue';
 import ItemView from '../views/ItemView.vue';
+import createListView from '../views/CreatedListView.js';
+
 
 export default createRouter({
     history: createWebHistory(),
@@ -17,17 +19,20 @@ export default createRouter({
             path: '/news',
             name: 'news',
             // component: url 주소로 갔을 때 표시될 컴포넌트
-            component: NewsView,
+            // component: NewsView,
+            component: createListView('NewsView'),
         },
         {
             path: '/ask',
             name: 'ask',
-            component: AskView,
+            // component: AskView,
+            component: createListView('AskView'),
         },
         {
             path: '/jobs',
             name: 'jobs',
-            component: JobsView,
+            // component: JobsView,
+            component: createListView('JobsView'),
         },        
         {
             path: '/user/:id',

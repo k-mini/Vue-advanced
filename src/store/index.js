@@ -9,6 +9,7 @@ export const store = createStore({
     ask: [],
     user: {},
     item: {},
+    list: [],
   },
   getters: {
     fetchedAsk(state) {
