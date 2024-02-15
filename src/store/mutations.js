@@ -17,5 +17,9 @@ export default {
     },
     SET_LIST(state, list) {
       state.list = list;
+    },
+    SET_LOADINGSTATUS(state, loadingStatus) {
+      // console.log('setloading 호출됨 : ', loadingStatus);
+      state.loadingStatus = loadingStatus;
     }
 }

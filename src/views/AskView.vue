@@ -24,12 +24,18 @@
 
 <script>
 import ListItem from '../components/ListItem.vue';
+import ListMixin from '../mixins/ListMixin.js';
+// import { store } from '../store/index';
 // import { mapGetters } from 'vuex';
 
 export default {
   components: {
     ListItem,
   },
+  mixins: [ListMixin],
+  // mounted() {
+  //   store.commit('SET_LOADINGSTATUS', false);
+  // },
   // computed : {
   //   // 1번째 방법
   //   // ask() {
@@ -42,15 +48,15 @@ export default {
   //   // 3번째 방법
   //   ...mapGetters(['fetchedAsk'])
   // },
-  created() {
-    this.$emit('startSpinner');
-    this.$store.dispatch('FETCH_ASK')
-      .then(() => {
-        this.$emit('endSpinner');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },
+  // created() {
+  //   this.$emit('startSpinner');
+  //   this.$store.dispatch('FETCH_ASK')
+  //     .then(() => {
+  //       this.$emit('endSpinner');
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // },
 };
 </script>

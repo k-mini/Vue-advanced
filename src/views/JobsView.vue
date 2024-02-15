@@ -25,20 +25,27 @@
 </template>
 
 <script>
-import ListItem from '../components/ListItem.vue'
+import ListItem from '../components/ListItem.vue';
+import ListMixin from '../mixins/ListMixin.js';
+// import { store } from '../store/index';
+
 export default {
   components: {
     ListItem,
   },
-  created() {
-    this.$emit('startSpinner');
-    this.$store.dispatch('FETCH_JOBS')
-      .then(() => {
-        this.$emit('endSpinner');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  mixins: [ListMixin],
+  // mounted() {
+  //   store.commit('SET_LOADINGSTATUS', false);
+  // }
+  // created() {
+  //   this.$emit('startSpinner');
+  //   this.$store.dispatch('FETCH_JOBS')
+  //     .then(() => {
+  //       this.$emit('endSpinner');
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 };
 </script>
